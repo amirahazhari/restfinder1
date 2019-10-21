@@ -1,0 +1,16 @@
+{
+	"folders": [
+		{
+			"path": "C:\\Users\\user\\restfinder"
+		},
+		{
+			"path": "C:\\Users\\user\\restfinder\\node_modules\\react-native-reanimated"
+		},
+		{
+			"path": "C:\\Users\\user\\restfinder\\node_modules\\react-native-gesture-handler"
+		}
+	],
+	"settings": {
+		"java.configuration.updateBuildConfiguration": "interactive"
+	}
+}
