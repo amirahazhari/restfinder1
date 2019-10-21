@@ -26,7 +26,7 @@ export default class Login extends Component
         password:"",
     }};
    
-  onLoginPress= () => {
+  onLoginPress = async () =>{
 
     await AsyncStorage.setItem('isLoggedIn', '1');
     await AsyncStorage.setItem('username', this.state.username);
