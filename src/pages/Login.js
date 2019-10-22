@@ -46,7 +46,7 @@ export default class Login extends Component
 
         if (responseJson.message === 'Data Matched') {
         
-            this.props.navigation.navigate('Profile');
+            this.props.navigation.navigate('AddRest');
           
         }
         else {

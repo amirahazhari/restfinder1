@@ -11,6 +11,7 @@ import ChangeEmail from './src/pages/ChangeEmail';
 import ChangePassword from './src/pages/ChangePassword';
 import DeleteUser from './src/pages/DeleteUser';
 import Logout from './src/pages/Logout';
+import AddRest from './src/pages/AddRest';
 
 const Project= createStackNavigator({
 
@@ -41,6 +42,11 @@ const Project= createStackNavigator({
   Logout:{
     screen: Logout
   },
+  AddRest:{
+    screen: AddRest
+  },
+    
+  
   
 
 },
