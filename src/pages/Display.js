@@ -8,7 +8,7 @@ import {
   
 } from 'react-native';
 import Icon from 'react-native-vector-icons/EvilIcons';
-import {OffCanvas3D} from 'react-native-off-canvas-menu';
+//import {OffCanvas3D} from 'react-native-off-canvas-menu';
 
 
 
@@ -23,23 +23,23 @@ export default class Display extends Component
           email:"",
           password:""
         }}*/
-        constructor(props){
+        /*constructor(props){
         this.state = {
           menuOpen: false
         }
-      }
+      }*/
 
         state = {
 
           slideValue : 0
         }
 
-        handleMenu() {
+        /*handleMenu() {
           const {menuOpen} = this.state
           this.setState({
             menuOpen: !menuOpen
           })
-        }
+        }*/
 
         render() {
 
@@ -85,7 +85,7 @@ export default class Display extends Component
               ]}/>
             </View>
 
-                <Text style = {styles.TextComponentStyle}> { this.props.navigation.state.params.Username}</Text>
+                <Text style = {styles.TextComponentStyle}> { this.props.navigation.state.params.username}</Text>
                 <Text style = {{fontSize:20, fontWeight:'bold', color:'rgba(255,255,255,0.7)'}}>{this.state.slideValue}</Text>
                 <View style={{borderRadius: 50, overflow: 'hidden'}}>       
                 <View style={{flexDirection: 'row', position: 'absolute'}}>

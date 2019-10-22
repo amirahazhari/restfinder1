@@ -33,7 +33,9 @@ export default class Login extends Component
 
     fetch('http://172.20.10.3/restfinder/src/pages/PHP/Login.php', {
       method: 'POST',
-      headers: { 'Accept': 'application/json', 'Content-Type': 'application/json' },
+      headers: {
+       'Accept': 'application/json', 
+      'Content-Type': 'application/json' },
       body: JSON.stringify({
         username: this.state.username,
         password: this.state.password,
@@ -44,7 +46,6 @@ export default class Login extends Component
 
         if (responseJson.message === 'Data Matched') {
         
-      
             this.props.navigation.navigate('Profile');
           
         }

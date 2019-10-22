@@ -6,7 +6,7 @@ include 'exist.php';
 $inputJSON = file_get_contents('php://input');
 $input = json_decode($inputJSON, TRUE); //convert JSON into array
  
-if ((!$input['username']==null) && (!$input['password'])==null){
+if ((!$input['username']==null) && (!$input['password']==null)){
 	
 	//Check for Mandatory parameters
 	if(isset($input['username']) && isset($input['password'])){
@@ -18,7 +18,8 @@ if ((!$input['username']==null) && (!$input['password'])==null){
 			if($result->num_rows >0){
                 $data = $result -> fetch_array();
 				//Validate the password
-				if(password_verify($password, $data['password'])){
+				if(password_verify($password, $data['password']))
+				{
 					$response["message"] = "Data Matched";
 				}
 				else{
@@ -26,11 +27,12 @@ if ((!$input['username']==null) && (!$input['password'])==null){
 				}
 			}
 			else{
-				$response= "Your have not been registered yet. Please signup.";
+				$response["message"] = "You are not registered yet.";
 			}
 			
 	}
-}else{
+}
+else{
 	$response["message"] = "Please fill in the blank.";
 }
 //Display the JSON response

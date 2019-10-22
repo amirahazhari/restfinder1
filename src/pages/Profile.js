@@ -148,7 +148,6 @@ Logout = () => {
                   left={() => <List.Icon color="#000" icon="exit-to-app" />}
                />
          
-         
                </List.Section>
                </ScrollView>
                </View>
