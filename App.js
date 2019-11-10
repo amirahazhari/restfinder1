@@ -12,6 +12,8 @@ import ChangePassword from './src/pages/ChangePassword';
 import DeleteUser from './src/pages/DeleteUser';
 import Logout from './src/pages/Logout';
 import AddRest from './src/pages/AddRest';
+import Geolocation from './src/pages/Geolocation';
+
 
 const Project= createStackNavigator({
 
@@ -45,13 +47,16 @@ const Project= createStackNavigator({
   AddRest:{
     screen: AddRest
   },
+  Geolocation:{
+    screen: Geolocation
+  }
     
   
   
 
 },
   {
-    initialRouteName: 'Home',
+    initialRouteName: 'Geolocation',
   }
   );
 export default createAppContainer(Project);
