@@ -6,7 +6,7 @@ import Home from './src/pages/Home';
 import Login from "./src/pages/Login";
 import Signup from './src/pages/Signup';
 import Profile from './src/pages/Profile';
-import Display from './src/pages/Display';
+//import Display from './src/pages/Display';
 import ChangeEmail from './src/pages/ChangeEmail';
 import ChangePassword from './src/pages/ChangePassword';
 import DeleteUser from './src/pages/DeleteUser';
@@ -29,9 +29,9 @@ const Project= createStackNavigator({
   Profile:{
     screen: Profile
   },
-  Display:{
+  /*Display:{
     screen: Display
-  },
+  },*/
   ChangeEmail:{
     screen: ChangeEmail
   },
@@ -56,7 +56,7 @@ const Project= createStackNavigator({
 
 },
   {
-    initialRouteName: 'Geolocation',
+    initialRouteName: 'Home',
   }
   );
 export default createAppContainer(Project);

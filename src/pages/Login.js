@@ -31,7 +31,7 @@ export default class Login extends Component
     await AsyncStorage.setItem('isLoggedIn', '1');
     await AsyncStorage.setItem('username', this.state.username);
 
-    fetch('http://172.20.10.3/restfinder/src/pages/PHP/Login.php', {
+    fetch('http://172.20.10.10/restfinder/src/pages/PHP/Login.php', {
       method: 'POST',
       headers: {
        'Accept': 'application/json', 
@@ -46,7 +46,7 @@ export default class Login extends Component
 
         if (responseJson.message === 'Data Matched') {
         
-            this.props.navigation.navigate('AddRest');
+            this.props.navigation.navigate('Profile');
           
         }
         else {

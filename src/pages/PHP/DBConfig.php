@@ -7,10 +7,10 @@ $HostName = "localhost";
 $DatabaseName = "restfinder";
  
 //Define your database username here.
-$HostUser = "root";
+$HostUser = "restfinder";
  
 //Define your database password here.
-$HostPass = "";
+$HostPass = "restfinder123";
 
 
 

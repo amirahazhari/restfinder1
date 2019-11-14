@@ -12,7 +12,7 @@ export default class DeleteUser extends Component {
 
   async componentDidMount() {
 
-    fetch('http://172.20.10.3/restfinder/src/pages/PHP/Delete.php', {
+    fetch('http://172.20.10.10/restfinder/src/pages/PHP/Delete.php', {
      
       method: 'POST',
       headers: {
