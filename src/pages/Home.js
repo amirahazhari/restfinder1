@@ -25,7 +25,7 @@ export default class Login extends Component
    
   user = () =>{
 
-    this.props.navigation.navigate('Display');
+    this.props.navigation.navigate('Geolocation');
       
   }
   
@@ -39,7 +39,6 @@ export default class Login extends Component
         return(
             <View style={styles.container}>
               <Logo/>
-
                 <View style = {styles.button}>
                 <TouchableOpacity  onPress={this.user}>
                     <Text style={styles.buttonText}>User</Text> 
@@ -51,7 +50,6 @@ export default class Login extends Component
                     <Text style={styles.buttonText}>Owner</Text> 
                 </TouchableOpacity>
                 </View>
-
             </View>
            
         );
@@ -63,10 +61,7 @@ const styles = StyleSheet.create ({
     backgroundColor:'#880e4f',
     flex:1,
     alignItems:'center',
-    flexDirection: 'column',
-    justifyContent:'center',
-   
-    
+    justifyContent:'center', 
   },
   
 button:{

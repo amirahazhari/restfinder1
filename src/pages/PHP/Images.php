@@ -17,7 +17,7 @@
 	mysql_select_db($dbname, $conn);
  
 	// Type your website name or domain name here.
-	$domain_name = "http://172.20.10.3/restfinder/" ;
+	$domain_name = "http://134.209.109.223/" ;
 	
 	// Image uploading folder.
 	$target_dir = "uploads";

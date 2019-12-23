@@ -25,19 +25,35 @@ export default class Signup extends Component
         username:"",
         email:"",
         password:"",
+
     }};
    
     validate = (username, email, password) => {
       var u = /^(([a-zA-Z0-9]{5,15}$))/
       var e = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
       var p = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{6,}$/
-    }
+
+      if (u.test(username) == false)
+      alert("Username must be more than 5")
+
+    if (e.test(email) == false)
+      alert("Email is not valid.")
+
+    if (p.test(password) == false)
+      alert("Your password must contain at least one lowercase letter, one  digit and more than 6 characters.")
+
+    if (u.test(username) == true && e.test(email) == true && p.test(password) == true)
+      return true;
+    else
+      return false;
+  }
   
-  onLoginPress= () => {
+  register= () => {
 
     var validate = this.validate(this.state.username, this.state.email, this.state.password)
 
-    fetch('http://172.20.10.3/restfinder/src/pages/PHP/Signup.php', {
+    if (validate == true){
+    fetch('http://134.209.109.223/src/pages/PHP/Signup.php', {
       method: 'POST',
       headers: { 'Accept': 'application/json', 'Content-Type': 'application/json' },
       body: JSON.stringify({
@@ -48,15 +64,13 @@ export default class Signup extends Component
     })
       .then((response) => response.json())
       .then((responseJson) => {
-
-        if (responseJson.message === 'User Created') {
-        
-      
-            this.props.navigation.navigate('Login');
-          
+        alert ("okay");
+        if (responseJson === 'User Created') {
+          Alert.alert(responseJson);
+          this.props.navigation.navigate('Login');
         }
         else {
-          alert(responseJson.message);
+          alert(responseJson);
         }
 
       }).catch((error) => {
@@ -64,9 +78,8 @@ export default class Signup extends Component
         console.log(error);
       });
   }
+}
 
-  
-    
     render() {
         return(
             <View style={styles.container}>
@@ -80,7 +93,7 @@ export default class Signup extends Component
 
               <TextInput style={styles.inputBox}
                   value={this.state.email}
-                  onChangeText={(text) => {this.setState({username: text})}}
+                  onChangeText={(text) => {this.setState({email: text})}}
                   underlineColorAndroid='rgba(0,0,0,0)'
                   placeholder='Email'
                   placeholderTextColor="#ffffff"/>  
@@ -93,15 +106,10 @@ export default class Signup extends Component
                   secureTextEntry={true}
                   placeholderTextColor="#ffffff"/>  
 
-                <TouchableOpacity style={styles.button} onPress={this.onLoginPress}>
-                    <Text style={styles.buttonText}>Login</Text> 
+                <TouchableOpacity style={styles.button} onPress={this.register}>
+                    <Text style={styles.buttonText}>Register</Text> 
                 </TouchableOpacity>
                 
-              <View style={styles.signupTextCont}>
-                  <Text style={styles.signupText}>Don't have an account yet? </Text>
-                  <TouchableOpacity onPress={() => this.props.navigation.navigate('Signup')}><Text style={styles.signupButton}>Sign Up</Text></TouchableOpacity>
-
-              </View>
             </View>
            
         );

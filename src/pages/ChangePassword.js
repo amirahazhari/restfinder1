@@ -22,7 +22,7 @@ export default class ChangePassword extends Component{
 
         ChangePassword = () => {
 
-            fetch('http://172.20.10.3/restfinder/src/pages/PHP/ChangePassword.php', {
+            fetch('http://134.209.109.223/src/pages/PHP/ChangePassword.php', {
               method: 'POST',
               headers: {
                 'Accept': 'application/json',

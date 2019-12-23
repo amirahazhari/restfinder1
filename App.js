@@ -3,7 +3,7 @@ import {createAppContainer } from 'react-navigation';
 import {createStackNavigator } from 'react-navigation-stack';
 
 import Home from './src/pages/Home';
-import Login from "./src/pages/Login";
+import Login from './src/pages/Login';
 import Signup from './src/pages/Signup';
 import Profile from './src/pages/Profile';
 //import Display from './src/pages/Display';

@@ -1,5 +1,5 @@
 <?php
-$response = array();
+//$response["message"] = array();
 include 'DBConfig.php';
 include 'exist.php';
  
@@ -26,7 +26,7 @@ if(isset($input['password']) && isset($input['username']) && isset($input['email
             $insertQuery  = "insert into users(username,email,password) values ('$username','$email','$hash')";
  
             if(mysqli_query($con,$insertQuery)){
-			$response = "User created.";
+				$response = "User created.";
             }
 		}
 		
@@ -35,7 +35,7 @@ if(isset($input['password']) && isset($input['username']) && isset($input['email
 		}
     }
 	else{
-		$response = "Email already been used.";
+		$response= "Email already been used.";
     }
 
 }

@@ -32,9 +32,9 @@ if ((!$input['username']==null) && (!$input['password']==null)){
 			
 	}
 }
-else{
+else
 	$response["message"] = "Please fill in the blank.";
-}
+
 //Display the JSON response
 echo json_encode($response);
 unset($_SESSION);

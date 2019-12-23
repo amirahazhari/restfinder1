@@ -31,7 +31,7 @@ export default class Login extends Component
     await AsyncStorage.setItem('isLoggedIn', '1');
     await AsyncStorage.setItem('username', this.state.username);
 
-    fetch('http://172.20.10.10/restfinder/src/pages/PHP/Login.php', {
+    fetch('http://134.209.109.223/src/pages/PHP/Login.php', {
       method: 'POST',
       headers: {
        'Accept': 'application/json', 

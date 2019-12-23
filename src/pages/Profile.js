@@ -53,7 +53,7 @@ export default class Display extends Component{
       username = await AsyncStorage.getItem('username') ;
       this.setState({username:username});
      
-      fetch('http:// 172.20.10.10/restfinder/src/pages/PHP/Profile.php', {
+      fetch('http://134.209.109.223/src/pages/PHP/Profile.php', {
         method: 'POST',
         headers: {
            'Accept': 'application/json',
