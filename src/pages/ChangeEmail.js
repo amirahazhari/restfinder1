@@ -8,6 +8,7 @@ import {
   TextInput,
   TouchableOpacity
 } from 'react-native';
+import styles from '../css/styles';
 
 
 export default class ChangeEmail extends Component{
@@ -80,58 +81,3 @@ export default class ChangeEmail extends Component{
         }
 }
 
-const styles = StyleSheet.create ({
-  container : {
-    backgroundColor:'#880e4f',
-    flex:1,
-    alignItems:'center',
-    //flexDirection: 'column',
-    justifyContent:'center',
-    
-  },
-    signupTextCont:{
-        flexGrow:1,
-        alignItems:'flex-end',
-        justifyContent:'center',
-        paddingVertical:16,
-        flexDirection: 'row'
-
-    },
-    
-    signupText:{
-        color:'rgba(255,255,255,0.7)',
-        fontSize:16
-    },
-
-    signupButton:{
-      color:'#ffffff',
-      fontSize:16,
-      fontWeight:'bold'
-    },
-    inputBox: {
-      width:300,
-      backgroundColor:'rgba(255,255,255,0.3)',
-      borderRadius:25,
-      paddingHorizontal:16,
-      fontSize:16,
-      color:'#ffffff',
-      marginVertical:10
-      
-  },
-
-button:{
-    width:300,
-    backgroundColor:'#bdbdbd',
-    borderRadius:25,
-    marginVertical:10,
-    paddingVertical:12
-},
-
-buttonText: {
-    fontSize:16,
-    fontWeight:'bold',
-    color:'#263238',
-    textAlign:'center'
-}
-  
-  });

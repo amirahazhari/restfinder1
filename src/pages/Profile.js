@@ -9,7 +9,7 @@ import {
   Alert
 } from 'react-native';
 import { Avatar, List } from 'react-native-paper';
-
+import styles from '../css/styles';
 export default class Display extends Component{
 
   constructor(props) {
@@ -113,12 +113,12 @@ Logout = () => {
           return (
 
           <View style ={styles.container} >
-             <ScrollView style={{ backgroundColor: '#880e4f'}} refreshControl={this._refreshControl()} >
-             <List.Section style={{backgroundColor:'#b0bec5'}}>
+             <ScrollView style={{ backgroundColor: '#227494'}} refreshControl={this._refreshControl()} >
+             <List.Section style={{backgroundColor:'#eb8e5e'}}>
             
-               <List.Subheader style={{backgroundColor:'#e2f1f8'}}>PROFILE</List.Subheader>
+               <List.Subheader style={{backgroundColor:'#f5e7d3'}}>PROFILE</List.Subheader>
                <View style={{ flexDirection: 'row', margin: 10 }}>
-               <Avatar.Icon style={{ backgroundColor: '#673AB7' }} icon="person" />
+               <Avatar.Icon style={{ backgroundColor: '#f5e7d3' }} icon="person" />
                <View style={{ flexDirection: 'column', alignSelf: 'center',margin: 30 }}>
                      <Text style={styles.usernameText}>{this.state.username}</Text>
                      <Text style={{ marginHorizontal: 20 }}>{this.state.email}</Text>
@@ -135,7 +135,7 @@ Logout = () => {
                   onPress={this.ChangePassword}
                   left={() => <List.Icon color="#000" icon="lock" />}
                />
-               <List.Subheader style={{ backgroundColor: '#e2f1f8' }}>MORE</List.Subheader>
+               <List.Subheader style={{ backgroundColor: '#f5e7d3' }}>MORE</List.Subheader>
                 <List.Item
                   title="Delete Account"
                   onPress={this.DeleteUser}
@@ -155,33 +155,3 @@ Logout = () => {
         }
       }
   
-const styles = StyleSheet.create ({
-    container : {
-      backgroundColor:'#880e4f',
-      flex:1,
-      alignItems:'center',
-      //flexDirection: 'column',
-      justifyContent:'center',
-      
-    },
-    rowViewContainer: {
-      fontSize: 20,
-      paddingRight: 10,
-      paddingTop: 10,
-      paddingBottom: 10,
-    },
-containerStyle: {
-    marginTop: 20, 
-    borderTopWidth: 1,
-     borderBottomWidth: 1, 
-     borderBottomColor: '#cbd2d9',
-},
-usernameText: {
-  fontSize: 20,
-  marginHorizontal: 20, 
-  color: '#000',
-  fontWeight: 'bold',
-},
-
-    
-});

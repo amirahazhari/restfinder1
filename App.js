@@ -11,15 +11,14 @@ import ChangeEmail from './src/pages/ChangeEmail';
 import ChangePassword from './src/pages/ChangePassword';
 import DeleteUser from './src/pages/DeleteUser';
 import Logout from './src/pages/Logout';
-import AddRest from './src/pages/AddRest';
 import Geolocation from './src/pages/Geolocation';
+import Navigation from './src/pages/Navigation';
+import Menu from './src/components/Menu';
+
 
 
 const Project= createStackNavigator({
 
-  Home:{
-    screen: Home
-  },
   Login: {
    screen: Login
   },
@@ -44,11 +43,19 @@ const Project= createStackNavigator({
   Logout:{
     screen: Logout
   },
-  AddRest:{
-    screen: AddRest
-  },
+  
   Geolocation:{
     screen: Geolocation
+  },
+  Home:{
+    screen: Home,
+    
+  },
+  Navigation:{
+    screen:Navigation
+  },
+  Menu:{
+    screen:Menu
   }
     
   
@@ -56,7 +63,7 @@ const Project= createStackNavigator({
 
 },
   {
-    initialRouteName: 'Home',
+    initialRouteName: 'Login',
   }
   );
 export default createAppContainer(Project);

@@ -12,6 +12,7 @@ import {
 
 //import App from '../../App';
 import Logo from '../components/Logo';
+import styles from '../css/styles';
 
 
 //import Form from '../components/Form';
@@ -40,7 +41,7 @@ export default class Signup extends Component
       alert("Email is not valid.")
 
     if (p.test(password) == false)
-      alert("Your password must contain at least one lowercase letter, one  digit and more than 6 characters.")
+      alert("Your password must contain at least one lowercase letter,one uppercase letter and one  digit and more than 6 characters.")
 
     if (u.test(username) == true && e.test(email) == true && p.test(password) == true)
       return true;
@@ -64,7 +65,7 @@ export default class Signup extends Component
     })
       .then((response) => response.json())
       .then((responseJson) => {
-        alert ("okay");
+        //alert ("okay");
         if (responseJson === 'User Created') {
           Alert.alert(responseJson);
           this.props.navigation.navigate('Login');
@@ -116,60 +117,6 @@ export default class Signup extends Component
     }
 }
 
-const styles = StyleSheet.create ({
-  container : {
-    backgroundColor:'#880e4f',
-    flex:1,
-    alignItems:'center',
-    //flexDirection: 'column',
-    justifyContent:'center',
-    
-  },
-    signupTextCont:{
-        flexGrow:1,
-        alignItems:'flex-end',
-        justifyContent:'center',
-        paddingVertical:16,
-        flexDirection: 'row'
 
-    },
-    
-    signupText:{
-        color:'rgba(255,255,255,0.7)',
-        fontSize:16
-    },
-
-    signupButton:{
-      color:'#ffffff',
-      fontSize:16,
-      fontWeight:'bold'
-    },
-    inputBox: {
-      width:300,
-      backgroundColor:'rgba(255,255,255,0.3)',
-      borderRadius:25,
-      paddingHorizontal:16,
-      fontSize:16,
-      color:'#ffffff',
-      marginVertical:10
-      
-  },
-
-button:{
-    width:300,
-    backgroundColor:'#bdbdbd',
-    borderRadius:25,
-    marginVertical:10,
-    paddingVertical:12
-},
-
-buttonText: {
-    fontSize:16,
-    fontWeight:'bold',
-    color:'#263238',
-    textAlign:'center'
-}
-  
-  });
   //export default Login;
 

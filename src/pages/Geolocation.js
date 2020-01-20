@@ -11,11 +11,22 @@ import {
   StyleSheet,
   View,
   Text,
-  Image
+  Image,
+  Button
 } from 'react-native';
 
 import MapView, { Marker, Callout } from 'react-native-maps';
 import Geolocation from '@react-native-community/geolocation';
+//import MapInput from "./MapInput";
+//import { List, RadioButton } from 'react-native-paper';
+//import {Dropdown } from 'react-native-material-dropdown';
+import getDirections from 'react-native-google-maps-directions'
+//import {getLocation} from './LocationService';
+
+const LATITUDE_DELTA = 0.0922;
+const LONGITUDE_DELTA = 0.0421;
+// Disable yellow box warning messages
+console.disableYellowBox = true;
 
 export default class App extends Component {
 
@@ -24,8 +35,14 @@ export default class App extends Component {
     this.state = {
       lat: null,
       long: null,
-      places: null
+      places: null,
+      isMapReady: false,
+      marginTop: 1,
+      userLocation: "",
+      regionChangeProgress: false,
+      markerPressed: false
     }
+    //this.renderMapHack = _renderMapHack.bind(this);
   }
   componentDidMount() {
     Geolocation.getCurrentPosition(
@@ -33,13 +50,31 @@ export default class App extends Component {
         const lat = position.coords.latitude;
         const long = position.coords.longitude;
         this.setState({ lat, long })
-        this.getPlaces()
+        this.getPlaces();
+       // this.getInitialState();
+      }
+    );
+ 
+    this.watchID = Geolocation.watchPosition(
+      position => {
+        this.setState({
+       
+            lat: position.coords.latitude,
+            long: position.coords.longitude,
+            latitudeDelta: LATITUDE_DELTA,
+            longitudeDelta: LONGITUDE_DELTA,
+        
+        });
       }
     );
   }
 
+ /* onMapReady = () => {
+    this.setState({ isMapReady: true, marginTop: 0 });
+  }*/
+
   getPlaces() {
-    const url = this.getUrlWithParameters(this.state.lat, this.state.long, 1000, "restaurant", 'AIzaSyAKoXz53w9IRr9E4d6lI0NtoocVi3h69FU')
+    const url = this.getUrlWithParameters(this.state.lat, this.state.long, 2500, "restaurant", 'AIzaSyAKoXz53w9IRr9E4d6lI0NtoocVi3h69FU')
     fetch(url)
       .then((data) => data.json())
       .then((res) => {
@@ -51,7 +86,7 @@ export default class App extends Component {
           if (ob && ob.open_now !== undefined) {
              var c = <Text>Open: {(element.opening_hours.open_now == true) ? 'YES' : 'NO'}</Text>
           }
-
+          
           let oc = element.price_level
 
           if(oc == 0){
@@ -80,9 +115,7 @@ export default class App extends Component {
           else{
             var a = <Text>No price shown</Text>
           }
-          
 
-          
           arrayMarkers.push(
             <Marker
               key={i}
@@ -90,17 +123,20 @@ export default class App extends Component {
                 latitude: element.geometry.location.lat,
                 longitude: element.geometry.location.lng
               }}
-          
+              //onPress={()=>{this.props.markerPressed()}}
             >
+
               <Callout>
                 <View>
-      
                   <Text>{element.name}</Text>
                   {c}
                   {a}
                   <Text>Rating:{element.rating}</Text>
+                  <Text>Review:{element.user_ratings_total}</Text>
                 </View>
+
               </Callout>
+              
             </Marker>
           )
         })
@@ -116,42 +152,122 @@ export default class App extends Component {
     const key = `&key=${API}`;
     return `${url}${location}${typeData}${key}`
   }
-  render() {
 
+
+  /*getInitialState(){
+    getLocation().then(data => {
+      this.updateState({
+        lat:data.latitude,
+        long: data.longitude
+      })
+    })
+  }
+
+  updateState(location){
+
+    this.setState({
+      lat:location.latitude,
+      long: location.longitude,
+      latitudeDelta: 0.003,
+      longitudeDelta: 0.003,
+    })
+  }*/
+
+ /* getCoordsFromName (loc){
+    this.setState({
+      lat: loc.lat,
+      long:loc.lng,
+    })
+  }*/
+
+  handleGetDirections = () => {
+    const data = {
+       source: {
+        latitude: this.state.lat,
+        longitude: this.state.long
+      },
+      destination: {
+        latitude:2.2736240,
+        longitude: 102.4440090
+      },
+     
+      params: [
+        {
+          key: "travelmode",
+          value: "driving"        // may be "walking", "bicycling" or "transit" as well
+        },
+        {
+          key: "dir_action",
+          value: "navigate"       // this instantly initializes navigation using the given travel mode
+        }
+      ],
+      
+    }
+ 
+    getDirections(data)
+  }
+  render() {
+   
     return (
 
       <View style={styles.container}>
-
-        {this.state.lat ?
+          
+          {this.state.lat ?
           <MapView
             style={{ flex: 1 }}
             provider={MapView.PROVIDER_GOOGLE}
+            toolbarEnabled
             initialRegion={{
               latitude: this.state.lat,
               longitude: this.state.long,
               latitudeDelta: 0.0922,
               longitudeDelta: 0.0421
             }}
+            showsUserLocation={true}
+            //followsUserLocation={true}
+           // onMapReady={this.onMapReady}
           >
             <Marker
               coordinate={{
                 latitude: this.state.lat,
                 longitude: this.state.long,
-              }}
+              }} 
+              title={"Your Location"}
+              draggable
             >
               <View>
                 <Image style={{ width: 50, height: 50 }} source={require("../images/marker.png")} />
               </View>
             </Marker>
             {this.state.places}
-          </MapView> : null}
+          </MapView>:null }
+
+         
       </View>
+      
     );
   }
 }
 
+
 const styles = StyleSheet.create({
   container: {
     flex: 1
+  },
+  radioButtonContainer: {
+    flexDirection: 'row',
+    backgroundColor: '#fafafa',
+    borderColor: 'transparent',
+    borderRadius: 2,
+    borderWidth: 1,
+    marginVertical: 1,
+    padding: 1,
+    borderColor: '#efefef'
+  },
+
+  radioButtonStyle: {
+    marginTop: 7,
+    fontWeight: 'bold',
+    color: '#484d51'
   },
 })
