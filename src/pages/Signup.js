@@ -54,7 +54,7 @@ export default class Signup extends Component
     var validate = this.validate(this.state.username, this.state.email, this.state.password)
 
     if (validate == true){
-    fetch('https://restfinder.codes/src/pages/PHP/Signup.php', {
+    fetch('https://www.restfinder.codes/src/pages/PHP/Signup.php', {
       method: 'POST',
       headers: { 'Accept': 'application/json', 'Content-Type': 'application/json' },
       body: JSON.stringify({

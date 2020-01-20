@@ -23,6 +23,7 @@ import Geolocation from '@react-native-community/geolocation';
 //import {Dropdown } from 'react-native-material-dropdown';
 import getDirections from 'react-native-google-maps-directions'
 //import {getLocation} from './LocationService';
+//import styles from '../css/styles';
 
 const LATITUDE_DELTA = 0.0922;
 const LONGITUDE_DELTA = 0.0421;
@@ -37,11 +38,11 @@ export default class App extends Component {
       lat: null,
       long: null,
       places: null,
-      isMapReady: false,
+     /* isMapReady: false,
       marginTop: 1,
       userLocation: "",
       regionChangeProgress: false,
-      markerPressed: false
+      markerPressed: false*/
     }
     //this.renderMapHack = _renderMapHack.bind(this);
   }
@@ -213,20 +214,21 @@ export default class App extends Component {
 
       <View style={styles.container}>
          <Root style={{margin:0.5}}>
-    <View>
-        <TouchableOpacity
+    <View >
+        <TouchableOpacity style={styles.button}
             onPress={() =>
               Popup.show({
                 type: 'Warning',
                 title: 'Alert',
                 button: false,
-                textBody: 'If the direction icon is not appear please tilt your phone',
+                textBody: 'If the direction icon is not appear please press the marker and tilt your phone',
                 buttontext: 'Ok',
                 callback: () => Popup.hide()
               })
             }
         >
-            <Text>Help!</Text>
+          <Text style={styles.buttonText}>No Direction Icon?</Text> 
+          
         </TouchableOpacity>
     </View>
 </Root>
@@ -288,4 +290,5 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     color: '#484d51'
   },
+  
 })

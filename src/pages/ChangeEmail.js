@@ -23,7 +23,7 @@ export default class ChangeEmail extends Component{
 
         ChangeEmail = () => {
 
-            fetch('https://restfinder.codes/src/pages/PHP/ChangeEmail.php', {
+            fetch('https://www.restfinder.codes/src/pages/PHP/ChangeEmail.php', {
               method: 'POST',
               headers: {
                 'Accept': 'application/json',

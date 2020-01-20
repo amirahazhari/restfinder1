@@ -82,6 +82,25 @@ export default {
       justifyContent: "flex-start"
     },
 
+    containerMap: {
+      flex: 1
+    },
+    radioButtonContainer: {
+      flexDirection: 'row',
+      backgroundColor: '#fafafa',
+      borderColor: 'transparent',
+      borderRadius: 2,
+      borderWidth: 1,
+      marginVertical: 1,
+      padding: 1,
+      borderColor: '#efefef'
+    },
+  
+    radioButtonStyle: {
+      marginTop: 7,
+      fontWeight: 'bold',
+      color: '#484d51'
+    },
 
 
 

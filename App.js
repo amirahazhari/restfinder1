@@ -63,7 +63,7 @@ const Project= createStackNavigator({
 
 },
   {
-    initialRouteName: 'Geolocation',
+    initialRouteName: 'Login',
   }
   );
 export default createAppContainer(Project);
