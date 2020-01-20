@@ -12,9 +12,10 @@ import {
   View,
   Text,
   Image,
-  Button
+  Button,
+  TouchableOpacity
 } from 'react-native';
-
+import {Root, Popup} from 'popup-ui';
 import MapView, { Marker, Callout } from 'react-native-maps';
 import Geolocation from '@react-native-community/geolocation';
 //import MapInput from "./MapInput";
@@ -180,7 +181,7 @@ export default class App extends Component {
     })
   }*/
 
-  handleGetDirections = () => {
+  /*handleGetDirections = () => {
     const data = {
        source: {
         latitude: this.state.lat,
@@ -205,13 +206,30 @@ export default class App extends Component {
     }
  
     getDirections(data)
-  }
+  }*/
   render() {
    
     return (
 
       <View style={styles.container}>
-          
+         <Root style={{margin:0.5}}>
+    <View>
+        <TouchableOpacity
+            onPress={() =>
+              Popup.show({
+                type: 'Warning',
+                title: 'Alert',
+                button: false,
+                textBody: 'If the direction icon is not appear please tilt your phone',
+                buttontext: 'Ok',
+                callback: () => Popup.hide()
+              })
+            }
+        >
+            <Text>Help!</Text>
+        </TouchableOpacity>
+    </View>
+</Root>
           {this.state.lat ?
           <MapView
             style={{ flex: 1 }}
